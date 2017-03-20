@@ -110,6 +110,34 @@
 				</div>
 			</div>
 
+			<div class="row">
+
+				<form:form action="/conselho/editar-status-denuncia" method="post">
+					<fieldset>
+						<legend>Modificar Status da Agressão</legend>
+
+						<div class="form-group">
+							<label class="col-sm-12 text-left col-form-label">Tipo de Denúncia</label> 
+								<select class="form-control" name="novoStatus">
+								<option>Selecione a Categoria da Agressão</option>
+
+								<c:forEach items="${statusDenuncia}" var="status">
+									<option value="${status}">${status}</option>
+								</c:forEach>
+							</select>
+						</div>
+					</fieldset>
+					<br />
+					<input type="hidden" name="denunciaId" value="${denuncia.id}"/>
+					<input type="submit" value="Salvar" class="btn btn-primary" />
+					<input type="hidden" name="${_csrf.parameterName }"
+						value="${_csrf.token }" />
+				</form:form>
+
+
+				<br />
+			</div>
+
 		</security:authorize>
 	</div>
 </tags:pageTemplate>

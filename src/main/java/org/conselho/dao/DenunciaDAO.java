@@ -16,20 +16,22 @@ public class DenunciaDAO {
 
 	@PersistenceContext
 	EntityManager manager;
-	
-	
-	public void salvar(Denuncia denuncia){
-		manager.persist(denuncia);
-	}
 
+	public void salvar(Denuncia denuncia) {
+		if (denuncia.getId() == null) {
+			manager.persist(denuncia);
+			return;
+		}
+		manager.merge(denuncia);
+
+	}
 
 	public Denuncia buscarPorId(int denunciaId) {
 		return manager.find(Denuncia.class, denunciaId);
 	}
 
-
 	public List<Denuncia> lista() {
 		return manager.createQuery("from Denuncia", Denuncia.class).getResultList();
 	}
-	
+
 }
