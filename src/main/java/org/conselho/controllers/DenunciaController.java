@@ -22,11 +22,11 @@ public class DenunciaController {
 	
 	@RequestMapping("/fazer-denuncia")
 	public ModelAndView formDenunciar(){	
-		return new ModelAndView("denuncia/fazer-form").addObject("tiposAgressao", agressaoDao.lista());
+		return new ModelAndView("denuncia/denuncia-form").addObject("tiposAgressao", agressaoDao.lista());
 	}	
 	@RequestMapping("/acompanhar-denuncia")
 	public String acompanharDenuncia(){		
-		return "denuncia/buscar-form";
+		return "denuncia/denuncia-buscar-form";
 	}
 	@RequestMapping("/denuncia")
 	public String denuncia(){		
@@ -45,7 +45,7 @@ public class DenunciaController {
 	
 	
 	@RequestMapping(value="/buscar-denuncia", method=RequestMethod.POST)
-	public ModelAndView buscarDenuncia(int denunciaId, RedirectAttributes redirectAttributes){		
+	public ModelAndView buscarDenuncia(Integer denunciaId, RedirectAttributes redirectAttributes){		
 
 		Denuncia denuncia = denunciaDao.buscarPorId(denunciaId);		
 	

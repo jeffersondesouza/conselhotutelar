@@ -1,5 +1,7 @@
 package org.conselho.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -24,4 +26,10 @@ public class DenunciaDAO {
 	public Denuncia buscarPorId(int denunciaId) {
 		return manager.find(Denuncia.class, denunciaId);
 	}
+
+
+	public List<Denuncia> lista() {
+		return manager.createQuery("from Denuncia", Denuncia.class).getResultList();
+	}
+	
 }

@@ -1,15 +1,25 @@
 package org.conselho.models;
 
+import java.util.Calendar;
+import java.util.TimeZone;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Denuncia {
 	
 	public Denuncia() {
 		this.status = StatusDenuncia.PENDENTE;
+		
+		TimeZone timeZone = TimeZone.getTimeZone("America/Sao_Paulo");
+		
+		
+		this.data = Calendar.getInstance(timeZone);
 	}
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,6 +40,15 @@ public class Denuncia {
 	private String descricaoDenuncia;
 
 	private String contato;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar data;
+	
+	
+
+	public Calendar getData() {
+		return data;
+	}
 
 	private StatusDenuncia status;
 	

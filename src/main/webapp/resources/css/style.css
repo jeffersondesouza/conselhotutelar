@@ -28,6 +28,24 @@ footer {
 	font-weight: 500;
 }
 
+.header-login {
+	background-color: #3385ff;
+	padding: 15px;
+	margin:0;
+	color: #fff;
+	text-align: center;
+}
+
+.login-form{
+	height: 450px;
+	width: 65%;
+	margin: auto;
+}
+.login-form h1{
+	font-size: 2em;
+}
+
+
 .carousel-inner img {
 	width: 100%; /* Set width to 100% */
 	margin: auto;
