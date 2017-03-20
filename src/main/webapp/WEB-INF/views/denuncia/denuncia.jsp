@@ -3,48 +3,113 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
 
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags"%>
 
 <tags:pageTemplate titulo="Denuncia">
 
 	<div class="container">
-		<div class="table-responsive">
-			<table class="table table-condensed">
-				<thead>
-					<th>ID da Denúncia</th>
-					<th>Data</th>
-					<th>Descrição</th>
-					<th>Situação</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td>${denuncia.id}</td>
-						<td>${denuncia.data}</td>
-						<td>${denuncia.descricaoDenuncia}</td>
-						<td>${denuncia.status.getMessagem()}</td>
-					</tr>
-				</tbody>
+		<br />
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">Resumo da Denúncia</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table class="table table-condensed">
+							<thead>
+								<tr>
+									<th>ID da Denúncia</th>
+									<th>Data</th>
+									<th>Descrição</th>
+									<th>Situação</th>
+								</tr>
+							</thead>
 
-			</table>
+							<tbody>
+
+								<tr>
+									<td>${denuncia.id}</td>
+
+									<td>${denuncia.data.getTime()}</td>
+
+									<td>${denuncia.descricaoDenuncia}</td>
+
+									<td>${denuncia.status.getMessagem()}</td>
+								</tr>
+
+							</tbody>
+
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<security:authorize access="isAuthenticated()">
-		<div class="row">
-			<ul>
-				<li>agressor - ${denuncia.agressor}</li>
-				<li>endereco - ${denuncia.endereco}</li>
-				<li>numeroCasa - ${denuncia.numeroCasa}</li>
-				<li>pontoReferencia - ${denuncia.pontoReferencia}</li>
-				<li>bairro - ${denuncia.bairro}</li>
-				<li>tipoDenuncia - ${denuncia.tipoDenuncia}</li>
-				<li>descricaoDenuncia - ${denuncia.descricaoDenuncia}</li>
-				<li>contato  - ${denuncia.contato}</li>
-			</ul>
-		</div>
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading text-center">Dados do Agressor</div>
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<thead>
+									<tr>
+										<th>Agressor</th>
+										<th>Endereço</th>
+										<th>Número</th>
+										<th>Ponto de Referência</th>
+										<th>Bairro</th>
+									</tr>
+								</thead>
+
+								<tbody>
+
+									<tr>
+										<td>${denuncia.agressor}</td>
+
+										<td>${denuncia.endereco}</td>
+
+										<td>${denuncia.numeroCasa}</td>
+
+										<td>${denuncia.pontoReferencia}</td>
+
+										<td>${denuncia.bairro}</td>
+									</tr>
+
+								</tbody>
+
+							</table>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading text-center">Detalhes da Denuncia</div>
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-condensed">
+								<thead>
+									<th>Tipo da Denúncia</th>
+									<th>Descrição</th>
+									<th>Contato do Denunciante</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td>${denuncia.tipoDenuncia}</td>
+										<td>${denuncia.descricaoDenuncia}</td>
+										<td>${denuncia.contato}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</security:authorize>
-
-
 	</div>
 </tags:pageTemplate>

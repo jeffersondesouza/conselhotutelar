@@ -2,7 +2,10 @@ package org.conselho.models;
 
 public enum StatusDenuncia {
 	PENDENTE("Pendente"), 
-	RECEBIDA("Esta denúncia esta sendo investigada, obrigado pela colaboração!");
+	RECEBIDA("Denúncia sob Investigação"),
+	FINALIZADA("Processo Judicial Gerado"),
+	
+	;
 	
 	private String messagem;
 	
